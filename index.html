@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#1c1f2e">
+<title>후쿠오카 2026 — 봄바람 속으로</title>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;700;900&family=Gaegu:wght@300;400;700&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
+
+:root {
+  --bg: #faf8f4;
+  --bg-card: #ffffff;
+  --bg-deep: #1c1f2e;
+  --bg-warm: #f3efe8;
+  --ink: #2c2c2c;
+  --ink-light: #6b6b6b;
+  --ink-faint: #a8a8a8;
+  --red: #d64545;
+  --red-soft: #fceaea;
+  --red-deep: #b03030;
+  --blue: #3a4a7a;
+  --blue-soft: #eaecf3;
+  --gold: #c4993e;
+  --gold-soft: #faf3e4;
+  --sakura: #f0c8c8;
+  --sakura-deep: #d68a90;
+  --green: #4a8a6a;
+  --green-soft: #e8f5ee;
+
+  --font-title: 'Noto Serif KR', 'Gowun Batang', serif;
+  --font-body: 'Pretendard Variable', 'Pretendard', -apple-system, sans-serif;
+  --font-accent: 'Gowun Batang', serif;
+  --font-hand: 'Gaegu', cursive;
+  --font-mono: 'DM Mono', monospace;
+
+  --radius: 16px;
+  --radius-sm: 10px;
+  --shadow-sm: 0 1px 4px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 24px rgba(0,0,0,0.06);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.08);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 15px;
+  font-weight: 400;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ═══════════════════════════════════════
+   HERO — 모바일 풀스크린
+   ═══════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 1.5rem 3rem;
+  background: var(--bg-deep);
+  color: var(--bg);
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 50% at 30% 20%, rgba(240,200,200,0.12), transparent),
+    radial-gradient(ellipse 60% 60% at 70% 70%, rgba(196,153,62,0.08), transparent),
+    linear-gradient(175deg, #2a2e45 0%, #1c1f2e 50%, #14162a 100%);
+}
+
+.hero-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.25;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 180px;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.35em;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}
+
+.hero-jp {
+  font-family: var(--font-title);
+  font-size: clamp(3.5rem, 15vw, 7rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  background: linear-gradient(180deg, rgba(255,255,255,0.95) 30%, var(--sakura) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  opacity: 0;
+  animation: heroReveal 1s ease-out 0.2s forwards;
+}
+
+.hero-kr {
+  font-family: var(--font-accent);
+  font-size: clamp(1rem, 3.5vw, 1.4rem);
+  font-weight: 400;
+  color: rgba(255,255,255,0.5);
+  margin-top: 0.6rem;
+  letter-spacing: 0.15em;
+  opacity: 0;
+  animation: heroReveal 0.8s ease-out 0.5s forwards;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: heroReveal 0.8s ease-out 0.8s forwards;
+}
+
+.hero-chip {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.15em;
+  padding: 0.45rem 0.9rem;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 100px;
+  color: rgba(255,255,255,0.45);
+  backdrop-filter: blur(4px);
+}
+
+.hero-sakura {
+  position: absolute;
+  top: 15%;
+  right: 5%;
+  font-size: clamp(4rem, 20vw, 10rem);
+  opacity: 0.04;
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+}
+
+@keyframes heroReveal {
+  from { opacity:0; transform: translateY(16px); }
+  to { opacity:1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   FLIGHT TICKETS — 보딩패스 스타일
+   ═══════════════════════════════════════ */
+.tickets {
+  padding: 0 1rem;
+  margin-top: -2rem;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.ticket {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  animation: heroReveal 0.7s ease-out forwards;
+}
+
+.ticket:nth-child(1) { animation-delay: 1s; }
+.ticket:nth-child(2) { animation-delay: 1.2s; }
+
+.ticket-top {
+  padding: 1.25rem 1.25rem 1rem;
+  position: relative;
+}
+
+.ticket-top::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 1.25rem;
+  right: 1.25rem;
+  border-bottom: 2px dashed #e8e4de;
+}
+
+.ticket-label {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  margin-bottom: 0.8rem;
+}
+
+.ticket.dep .ticket-label { color: var(--red); }
+.ticket.ret .ticket-label { color: var(--blue); }
+
+.ticket-route {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.ticket-code {
+  font-family: var(--font-title);
+  font-size: 1.8rem;
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.ticket-city {
+  font-family: var(--font-accent);
+  font-size: 0.72rem;
+  color: var(--ink-light);
+  margin-top: 0.15rem;
+}
+
+.ticket-mid {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0 0.3rem;
+}
+
+.ticket-mid svg { width: 100%; height: 12px; }
+
+.ticket-dur {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  color: var(--ink-faint);
+}
+
+.ticket-mid .plane-icon {
+  font-size: 0.9rem;
+}
+
+.ticket.dep .plane-icon { color: var(--red); }
+.ticket.ret .plane-icon { color: var(--blue); }
+
+.ticket-bottom {
+  padding: 1rem 1.25rem 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.ticket-field label {
+  font-family: var(--font-mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.15em;
+  color: var(--ink-faint);
+  display: block;
+  margin-bottom: 0.15rem;
+}
+
+.ticket-field span {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.ticket-field.big span {
+  font-family: var(--font-title);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+/* ═══════════════════════════════════════
+   LAYOUT — 모바일 중심
+   ═══════════════════════════════════════ */
+.wrap {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .wrap { max-width: 680px; padding: 0 2rem; }
+  .tickets { flex-direction: row; max-width: 700px; margin-left: auto; margin-right: auto; }
+  .ticket { flex: 1; }
+}
+
+/* ═══════════════════════════════════════
+   DAY DIVIDER
+   ═══════════════════════════════════════ */
+.day {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+}
+
+.day-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.day-num {
+  font-family: var(--font-title);
+  font-size: 2.2rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--red);
+  opacity: 0.2;
+}
+
+.day-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.day-info .title {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.day-info .date {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--ink-faint);
+  letter-spacing: 0.2em;
+}
+
+.day-flow {
+  font-family: var(--font-accent);
+  font-size: 0.78rem;
+  color: var(--ink-light);
+  margin-top: 0.6rem;
+  padding-left: 0.1rem;
+  line-height: 1.8;
+}
+
+/* ═══════════════════════════════════════
+   CARDS
+   ═══════════════════════════════════════ */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  margin-top: 1rem;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-accent {
+  position: absolute;
+  top: 0; left: 0;
+  width: 3px;
+  height: 100%;
+}
+
+.card-accent.red { background: var(--red); }
+.card-accent.blue { background: var(--blue); }
+.card-accent.gold { background: var(--gold); }
+.card-accent.green { background: var(--green); }
+.card-accent.sakura { background: var(--sakura-deep); }
+
+.card h3 {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.card h3 .icon {
+  font-size: 1rem;
+}
+
+.card .sub {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+/* ═══════════════════════════════════════
+   TIMELINE
+   ═══════════════════════════════════════ */
+.tl { padding-left: 1.2rem; position: relative; }
+
+.tl::before {
+  content: '';
+  position: absolute;
+  left: 3px;
+  top: 6px;
+  bottom: 6px;
+  width: 1.5px;
+  background: linear-gradient(to bottom, var(--sakura-deep), var(--sakura), transparent);
+  border-radius: 1px;
+}
+
+.tl-item {
+  position: relative;
+  padding: 0 0 1.2rem 0;
+}
+
+.tl-item:last-child { padding-bottom: 0; }
+
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.2rem;
+  top: 7px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--sakura-deep);
+  border: 2px solid var(--bg-card);
+  box-shadow: 0 0 0 1.5px var(--sakura);
+}
+
+.tl-time {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  color: var(--red);
+  letter-spacing: 0.08em;
+}
+
+.tl-text {
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+  line-height: 1.6;
+}
+
+.tl-note {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 0.1rem;
+  line-height: 1.5;
+}
+
+/* ═══════════════════════════════════════
+   RESTAURANT LIST
+   ═══════════════════════════════════════ */
+.resto-list { margin-top: 0.3rem; }
+
+.resto {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.resto:last-child { border-bottom: none; }
+
+.resto-n {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--red);
+  opacity: 0.4;
+  min-width: 1.2rem;
+  text-align: center;
+  padding-top: 0.1rem;
+  flex-shrink: 0;
+}
+
+.resto-body { flex: 1; min-width: 0; }
+
+.resto-name {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.resto-desc {
+  font-family: var(--font-accent);
+  font-size: 0.72rem;
+  color: var(--ink-light);
+  margin-top: 0.1rem;
+}
+
+.resto-addr {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--ink-faint);
+  margin-top: 0.1rem;
+  word-break: break-all;
+}
+
+.badge {
+  font-family: var(--font-body);
+  font-size: 0.58rem;
+  font-weight: 600;
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.badge.red { background: var(--red-soft); color: var(--red); }
+.badge.gold { background: var(--gold-soft); color: var(--gold); }
+.badge.green { background: var(--green-soft); color: var(--green); }
+.badge.blue { background: var(--blue-soft); color: var(--blue); }
+
+/* ═══════════════════════════════════════
+   LP GRID
+   ═══════════════════════════════════════ */
+.lp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+.lp-item {
+  background: var(--bg-warm);
+  border-radius: var(--radius-sm);
+  padding: 1rem 0.8rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lp-item:active { transform: scale(0.97); }
+
+.lp-icon { font-size: 1.6rem; margin-bottom: 0.3rem; }
+
+.lp-name {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.lp-note {
+  font-family: var(--font-accent);
+  font-size: 0.65rem;
+  color: var(--ink-faint);
+  margin-top: 0.15rem;
+}
+
+/* ═══════════════════════════════════════
+   MATCH CARD — Arsenal
+   ═══════════════════════════════════════ */
+.match {
+  background: linear-gradient(140deg, #1a0808 0%, #280f0f 60%, #1a0808 100%);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  margin-top: 1rem;
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.match::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -15%;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(214,69,69,0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.match-label {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: rgba(255,255,255,0.3);
+  text-align: center;
+}
+
+.match-vs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.match-team { text-align: center; }
+
+.match-badge { font-size: 2rem; display: block; margin-bottom: 0.2rem; }
+
+.match-tname {
+  font-family: var(--font-title);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.match-tinfo {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 0.1rem;
+}
+
+.match-x {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.1);
+}
+
+.match-meta {
+  text-align: center;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 0.5rem;
+  line-height: 1.7;
+}
+
+.match-coyg {
+  text-align: center;
+  margin-top: 0.8rem;
+  font-family: var(--font-title);
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 0.4em;
+  color: var(--red);
+}
+
+/* ═══════════════════════════════════════
+   CHECKLIST
+   ═══════════════════════════════════════ */
+.check-list { margin-top: 0.3rem; }
+
+.check-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.03);
+  font-size: 0.85rem;
+  -webkit-tap-highlight-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.check-item:last-child { border-bottom: none; }
+
+.check-box {
+  width: 22px; height: 22px;
+  border: 2px solid #d0ccc4;
+  border-radius: 6px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: transparent;
+  transition: all 0.15s ease;
+}
+
+.check-item.done .check-box {
+  background: var(--red);
+  border-color: var(--red);
+  color: white;
+}
+
+.check-item.done .check-label {
+  text-decoration: line-through;
+  color: var(--ink-faint);
+}
+
+/* ═══════════════════════════════════════
+   FOOTER
+   ═══════════════════════════════════════ */
+.footer {
+  text-align: center;
+  padding: 3rem 1rem 4rem;
+  color: var(--ink-faint);
+}
+
+.footer-sakura {
+  font-size: 1.2rem;
+  letter-spacing: 1em;
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+.footer p {
+  font-family: var(--font-accent);
+  font-size: 0.75rem;
+}
+
+/* ═══════════════════════════════════════
+   SCROLL ANIMATIONS
+   ═══════════════════════════════════════ */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-sakura">桜</div>
+  <div class="hero-content">
+    <div class="hero-label">FUKUOKA TRAVEL ITINERARY</div>
+    <div class="hero-jp">福岡</div>
+    <div class="hero-kr">후쿠오카의 봄바람 속으로</div>
+    <div class="hero-meta">
+      <span class="hero-chip">2026.04.10 — 04.12</span>
+      <span class="hero-chip">2박 3일</span>
+      <span class="hero-chip">먹고 걷고 듣는 여행</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TICKETS ─── -->
+<div class="tickets wrap">
+  <div class="ticket dep">
+    <div class="ticket-top">
+      <div class="ticket-label">DEPARTURE · 출발</div>
+      <div class="ticket-route">
+        <div>
+          <div class="ticket-code">TAE</div>
+          <div class="ticket-city">대구</div>
+        </div>
+        <div class="ticket-mid">
+          <span class="plane-icon">✈︎</span>
+          <svg viewBox="0 0 120 2"><line x1="0" y1="1" x2="120" y2="1" stroke="#e0dcd4" stroke-width="1" stroke-dasharray="4 3"/></svg>
+          <span class="ticket-dur">1h 05m</span>
+        </div>
+        <div style="text-align:right;">
+          <div class="ticket-code">FUK</div>
+          <div class="ticket-city">후쿠오카</div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-bottom">
+      <div class="ticket-field"><label>DATE</label><span>04.10 금</span></div>
+      <div class="ticket-field big"><label>DEP</label><span>17:20</span></div>
+      <div class="ticket-field big"><label>ARR</label><span>18:25</span></div>
+      <div class="ticket-field"><label>FLIGHT</label><span>TW215</span></div>
+      <div class="ticket-field"><label>SEAT</label><span>4E</span></div>
+      <div class="ticket-field"><label>BOOKING</label><span style="font-family:var(--font-mono);font-size:0.75rem;">WYVF35</span></div>
+    </div>
+  </div>
+
+  <div class="ticket ret">
+    <div class="ticket-top">
+      <div class="ticket-label">RETURN · 귀국</div>
+      <div class="ticket-route">
+        <div>
+          <div class="ticket-code">FUK</div>
+          <div class="ticket-city">후쿠오카</div>
+        </div>
+        <div class="ticket-mid">
+          <span class="plane-icon">✈︎</span>
+          <svg viewBox="0 0 120 2"><line x1="0" y1="1" x2="120" y2="1" stroke="#e0dcd4" stroke-width="1" stroke-dasharray="4 3"/></svg>
+          <span class="ticket-dur">0h 55m</span>
+        </div>
+        <div style="text-align:right;">
+          <div class="ticket-code">PUS</div>
+          <div class="ticket-city">부산/김해</div>
+        </div>
+      </div>
+    </div>
+    <div class="ticket-bottom">
+      <div class="ticket-field"><label>DATE</label><span>04.12 일</span></div>
+      <div class="ticket-field big"><label>DEP</label><span>20:00</span></div>
+      <div class="ticket-field big"><label>ARR</label><span>20:55</span></div>
+      <div class="ticket-field"><label>FLIGHT</label><span>TW236</span></div>
+      <div class="ticket-field"><label>SEAT</label><span>7F</span></div>
+      <div class="ticket-field"><label>BOOKING</label><span style="font-family:var(--font-mono);font-size:0.75rem;">BJVC4P</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     DAY 1
+     ═══════════════════════════════════ -->
+<div class="wrap">
+  <div class="day reveal">
+    <div class="day-tag">
+      <span class="day-num">01</span>
+      <div class="day-info">
+        <span class="title">도착, 맛집, 재즈</span>
+        <span class="date">2026.04.10 FRI</span>
+      </div>
+    </div>
+    <div class="day-flow">✈️ 공항 → 🏨 숙소 → 🍴 저녁 → 🎷 라이브바</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent red"></div>
+    <h3><span class="icon">🏨</span> 숙소 & 이동</h3>
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-time">18:25</div>
+        <div class="tl-text">후쿠오카 공항 도착</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30–18:51</div>
+        <div class="tl-text">공항선K (가라쓰행) → <strong>덴진역</strong></div>
+        <div class="tl-note">약 21분</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">~19:05</div>
+        <div class="tl-text"><strong>Plaza Hotel Premier</strong></div>
+        <div class="tl-note">1 Chome-14-13 Daimyo · 도보 11분</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent sakura"></div>
+    <h3><span class="icon">🍴</span> 저녁 후보 <span class="sub">도보 10분 이내</span></h3>
+    <div class="resto-list">
+      <div class="resto"><span class="resto-n">1</span><div class="resto-body"><div class="resto-name">니쿠젠</div><div class="resto-desc">야키니쿠 무한리필</div><div class="resto-addr">2 Chome-12-17 Daimyo</div></div><span class="badge red">DM예약</span></div>
+      <div class="resto"><span class="resto-n">2</span><div class="resto-body"><div class="resto-name">모토무라 규카츠</div><div class="resto-desc">규카츠</div><div class="resto-addr">1 Chome-14-5 Daimyo</div></div><span class="badge gold">2h대기</span></div>
+      <div class="resto"><span class="resto-n">3</span><div class="resto-body"><div class="resto-name">효탄스시</div><div class="resto-desc">초밥 · 최강록 인정 맛집</div><div class="resto-addr">2 Chome-11-10 Tenjin</div></div><span class="badge blue">왕맛</span></div>
+      <div class="resto"><span class="resto-n">4</span><div class="resto-body"><div class="resto-name">야키토리</div><div class="resto-desc">야키토리</div><div class="resto-addr">Imaizumi 2-4-23</div></div></div>
+      <div class="resto"><span class="resto-n">5</span><div class="resto-body"><div class="resto-name">멘야가가 텐진</div><div class="resto-desc">소유라멘</div><div class="resto-addr">Imaizumi 2-5-6</div></div><span class="badge green">라멘맛집</span></div>
+      <div class="resto"><span class="resto-n">6</span><div class="resto-body"><div class="resto-name">야키니쿠 키와미야</div><div class="resto-desc">모츠나베 / 고기 · 분위기◎</div><div class="resto-addr">Daimyo 1-11-4 2F</div></div></div>
+      <div class="resto"><span class="resto-n">7</span><div class="resto-body"><div class="resto-name">후지요시</div><div class="resto-desc">꼬치 + 사시미</div><div class="resto-addr">9-6 Nishinakasu</div></div></div>
+      <div class="resto"><span class="resto-n">8</span><div class="resto-body"><div class="resto-name">모츠나베 타슈</div><div class="resto-desc">모츠나베</div><div class="resto-addr">Daimyo 1-3-6</div></div><span class="badge green">예약가능</span></div>
+      <div class="resto"><span class="resto-n">9</span><div class="resto-body"><div class="resto-name">마구로토 고항 쿠로다한</div><div class="resto-desc">회덮밥 · ~5만원 레전드급</div><div class="resto-addr">Daimyo 1-1-23</div></div><span class="badge gold">레전드</span></div>
+      <div class="resto"><span class="resto-n">10</span><div class="resto-body"><div class="resto-name">규카츠 교토가츠규</div><div class="resto-desc">규카츠</div><div class="resto-addr">Daimyo 2-1-52</div></div></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent blue"></div>
+    <h3><span class="icon">🎷</span> 라이브바</h3>
+    <div class="tl-text" style="font-size:0.88rem;"><strong>재즈카페 백스테이지</strong></div>
+    <div class="tl-note">Daimyo 2-4-31 平子ビル 1F</div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DAY 2
+       ═══════════════════════════════════ -->
+  <div class="day reveal">
+    <div class="day-tag">
+      <span class="day-num">02</span>
+      <div class="day-info">
+        <span class="title">공원, LP, 축구, 포장마차</span>
+        <span class="date">2026.04.11 SAT</span>
+      </div>
+    </div>
+    <div class="day-flow">🌿 오호리 & 니시공원 → 💿 LP숍 → ⚽ 아스날 → 🏮 포장마차</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent green"></div>
+    <h3><span class="icon">🌿</span> 오전 산책</h3>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-text">숙소 → <strong>오호리 공원</strong></div><div class="tl-note">도보 20~25분 / 택시 5~10분 · 가는 길에 🏯 성터 구경</div></div>
+      <div class="tl-item"><div class="tl-text">오호리 공원에서 <strong>팬케이크</strong> 🥞</div></div>
+      <div class="tl-item"><div class="tl-text"><strong>니시공원</strong> 산책</div></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent sakura"></div>
+    <h3><span class="icon">🍴</span> 점심 후보</h3>
+    <div class="resto-list">
+      <div class="resto"><span class="resto-n">1</span><div class="resto-body"><div class="resto-name">시나리우동</div><div class="resto-desc">우동</div><div class="resto-addr">Otemon 3-3-24</div></div><span class="badge red">오픈런</span></div>
+      <div class="resto"><span class="resto-n">2</span><div class="resto-body"><div class="resto-name">간소 나가하마야</div><div class="resto-desc">돈코츠 라멘 · 니시공원 근처</div><div class="resto-addr">Nagahama 2-5-25</div></div></div>
+      <div class="resto"><span class="resto-n">3</span><div class="resto-body"><div class="resto-name">이마야 햄버거</div><div class="resto-desc">일본 3대 햄버거 🍔</div><div class="resto-addr">Minato 3-9-5 西公園</div></div><span class="badge gold">3대버거</span></div>
+      <div class="resto"><span class="resto-n">4</span><div class="resto-body"><div class="resto-name">오호리 우나기</div><div class="resto-desc">장어덮밥 · 포장가능</div><div class="resto-addr">1 Chome-15-1 Akasaka</div></div><span class="badge green">예약가능</span></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent gold"></div>
+    <h3><span class="icon">💿</span> LP 탐방</h3>
+    <div class="lp-grid">
+      <div class="lp-item"><div class="lp-icon">🎵</div><div class="lp-name">Ticro Market</div><div class="lp-note">숙소 바로앞</div></div>
+      <div class="lp-item"><div class="lp-icon">🎶</div><div class="lp-name">보더라인 레코드</div><div class="lp-note">숙소 바로앞</div></div>
+      <div class="lp-item"><div class="lp-icon">🎸</div><div class="lp-name">페이스 레코드</div><div class="lp-note">텐진역</div></div>
+      <div class="lp-item"><div class="lp-icon">🗼</div><div class="lp-name">타워레코드</div><div class="lp-note">파르코 · 새 LP</div></div>
+    </div>
+    <p style="font-family:var(--font-accent);font-size:0.75rem;color:var(--ink-faint);margin-top:0.8rem;">파르코 백화점 구경 → 저녁은 백화점 or 숙소 근처 맛집!</p>
+  </div>
+
+  <!-- ARSENAL -->
+  <div class="match reveal">
+    <div class="match-label">PREMIER LEAGUE · MD 32</div>
+    <div class="match-vs">
+      <div class="match-team"><span class="match-badge">🔴</span><div class="match-tname">Arsenal</div><div class="match-tinfo">1ST · 70 PTS</div></div>
+      <div class="match-x">vs</div>
+      <div class="match-team"><span class="match-badge">🍒</span><div class="match-tname">Bournemouth</div><div class="match-tinfo">13TH · 42 PTS</div></div>
+    </div>
+    <div class="match-meta">⏰ 20:30 JST · 🏟️ Emirates Stadium<br>🍺 숙소 근처 펍에서 시청!</div>
+    <div class="match-coyg">C O Y G ! !</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent red"></div>
+    <h3><span class="icon">🏮</span> 포장마차</h3>
+    <div class="tl-text" style="font-size:0.85rem;">축구 관람 후 → <strong>나카스 강변 포장마차 거리</strong> 🍢</div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       DAY 3
+       ═══════════════════════════════════ -->
+  <div class="day reveal">
+    <div class="day-tag">
+      <span class="day-num">03</span>
+      <div class="day-info">
+        <span class="title">이토시마, 공연, 귀국</span>
+        <span class="date">2026.04.12 SUN</span>
+      </div>
+    </div>
+    <div class="day-flow">🧳 체크아웃 → 🍽️ 장어덮밥 → 📍 이토시마 → 🛍️ 세리아 → 🎹 공연 → ✈️</div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent blue"></div>
+    <h3><span class="icon">🧳</span> 일정 타임라인</h3>
+    <div class="tl">
+      <div class="tl-item"><div class="tl-time">오전</div><div class="tl-text">체크아웃 & 짐 맡기기 <span style="color:var(--ink-faint);font-size:0.72rem;">(500엔)</span></div></div>
+      <div class="tl-item"><div class="tl-text"><strong>장어덮밥</strong> 🍽️</div><div class="tl-note">전날 오호리에서 먹었다면 → 하카타역 근처 탐색</div></div>
+      <div class="tl-item"><div class="tl-text"><strong>富一（とみいち）</strong></div><div class="tl-note">이토시마 · 버스 25~35분 / 택시 15~20분</div></div>
+      <div class="tl-item"><div class="tl-text"><strong>세리아</strong> 쇼핑 ☕</div><div class="tl-note">예쁜 컵 사자… 헤헤</div></div>
+      <div class="tl-item"><div class="tl-time">~13:00</div><div class="tl-text"><strong>후쿠오카 심포니홀</strong></div><div class="tl-note">14시 공연 → 13시까지 도착!</div></div>
+      <div class="tl-item"><div class="tl-time">~16:00</div><div class="tl-text">공연 끝 → 숙소 짐 찾기</div><div class="tl-note">도보 10~15분</div></div>
+      <div class="tl-item"><div class="tl-time">⭐ ~18:00</div><div class="tl-text"><strong>후쿠오카 공항 도착</strong></div><div class="tl-note">지하철+도보 20~30분 / 택시 15~20분</div></div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent sakura"></div>
+    <h3><span class="icon">🍴</span> 공항 저녁 후보</h3>
+    <div class="resto-list">
+      <div class="resto"><span class="resto-n">1</span><div class="resto-body"><div class="resto-name">텐푸라 히라오 본점</div></div></div>
+      <div class="resto"><span class="resto-n">2</span><div class="resto-body"><div class="resto-name">야타이 마루니</div></div></div>
+      <div class="resto"><span class="resto-n">3</span><div class="resto-body"><div class="resto-name">하카타 야리우동 벳테이</div></div></div>
+      <div class="resto"><span class="resto-n">4</span><div class="resto-body"><div class="resto-name">타케노야</div></div></div>
+      <div class="resto"><span class="resto-n">5</span><div class="resto-body"><div class="resto-name">하카타 토리료우리 토리베이</div></div></div>
+      <div class="resto"><span class="resto-n">6</span><div class="resto-body"><div class="resto-name">하카타 모츠나베 오오야마</div></div></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════
+       CHECKLIST
+       ═══════════════════════════════════ -->
+  <div class="day reveal" style="margin-top:2.5rem;">
+    <div class="day-tag">
+      <span class="day-num" style="opacity:0.1;">✓</span>
+      <div class="day-info">
+        <span class="title">체크리스트</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-accent red"></div>
+    <h3><span class="icon">✅</span> 출발 전 확인</h3>
+    <div class="check-list">
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">이심 구매</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">다이슨 대여</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">항공권 & 숙소 날짜 재확인</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">현금 환전 금액 확인</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">니쿠젠 DM 예약</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">오호리 우나기 예약</span></div>
+      <div class="check-item" onclick="this.classList.toggle('done')"><span class="check-box">✓</span><span class="check-label">기차표 예매 (부산 → 동대구)</span></div>
+    </div>
+  </div>
+
+  <div class="card reveal" style="background:var(--bg-warm);">
+    <div class="card-accent gold"></div>
+    <h3><span class="icon">🛒</span> 돈키호테 텐진 본점</h3>
+    <p style="font-family:var(--font-accent);font-size:0.82rem;color:var(--ink-light);">24시간 운영 · 숙소 근처 · 쇼핑 조금… 헤헤</p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer-sakura">🌸🌸🌸</div>
+  <p>좋은 여행 되세요, 지훈 ✨</p>
+</div>
+
+<script>
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('show');
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
